@@ -16,7 +16,7 @@ public class TestLambda {
 
     public static void main(String[] args) {
 
-        //构造基础数据
+        //构造基础数据 merge
         People p1 = new People(3, 5, "11", "111");
         People p2 = new People(2, 2, "11", "112");
         People p3 = new People(9, 3, "11", "113");
