@@ -3,6 +3,7 @@ package com.ws.dailyrecord.lambda;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @Author: wangshuo
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class People {
 
     private Integer id;
