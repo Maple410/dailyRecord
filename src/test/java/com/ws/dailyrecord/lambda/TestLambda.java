@@ -1,12 +1,12 @@
 package com.ws.dailyrecord.lambda;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Multimaps;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author: wangshuo
@@ -33,21 +33,24 @@ public class TestLambda {
 
         //1.按照对象的某个属性分组，并取其中某个属性的集合：按照id 分组 取address的list
         Map<Integer, List<String>> map = list.stream().collect(Collectors.groupingBy(People::getId, Collectors.mapping(People::getAddress, Collectors.toList())));
-        for (Map.Entry<Integer, List<String>> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        map.forEach((k,v)->{
+            System.out.println(k +":" + v);
+        });
+        System.out.println("----------------------------");
 
         //2.保持分组后有序
        Map<Integer,List<People>> sortMap =  list.stream().collect(Collectors.groupingBy(People::getId, LinkedHashMap::new, Collectors.toCollection(ArrayList::new)));
-        for (Map.Entry<Integer, List<People>> entry : sortMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        sortMap.forEach((k,v) ->{
+            System.out.println(k + ": "+ v);
+        });
+        System.out.println("----------------------------");
 
         //3.List 进行指定分隔
         List<List<People>> splitList = Lists.partition(list,2);
         splitList.forEach(item ->{
             System.out.println(item.toString());
         });
+        System.out.println("----------------------------");
 
 
 
